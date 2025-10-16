@@ -1,0 +1,203 @@
+:root {
+  --color-principal: #6366F1;
+  --color-secundario: #A5B4FC;
+  --color-terciario: #FFFFFF;
+  --color-cuatro: #b7bcc7;
+  --color-quinto: #4F46E5;
+  --color-sexto: #1E1E2F;
+}
+
+/* ====== CONTENEDORES ====== */
+
+
+.page-template{
+ display: flex;
+ justify-content: center;
+ min-height: 100vh;
+ align-items: center;
+}
+
+.page-template .main-login{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+body{
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--color-cuatro);
+}
+
+/* ====== BOTÓN ====== */
+.boton-ingresa {
+  
+  
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  background-color: var(--color-secundario);
+  transition: background-color 0.5s ease;
+}
+
+.boton-ingresa:hover {
+  background-color: var(--color-principal);
+}
+
+/* ====== label e input ====== */
+.datos-user {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--color-quinto);
+
+}
+
+.cajas-user {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid var(--color-sexto);
+  border-radius: 10px; 
+  box-sizing: border-box;
+}
+
+
+/* ====== icono o logo ====== */  
+.logo-atom{
+  display: flex;
+  justify-content: flex-end; /* alinea el logo a la izquierda */
+  align-items: center;
+  border: 2px solid var(--color-principal); /* borde alrededor del logo */
+  border-radius: 10px; /* bordes redondeados */
+  padding: 10px; /* espacio interno para que no quede pegado al borde */ 
+  margin-bottom: 15px; /* separa el logo del título */
+  background: linear-gradient(to right, var(--color-principal) 0%, var(--color-terciario) 100%);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* sombra elegante */
+  transition: box-shadow 0.3s ease; /* animación suave */
+}
+
+.logo-atom:hover {
+  box-shadow: 0 20px 14px rgba(0, 0, 0, 0.3); /* sombra más fuerte al pasar el mouse */
+}
+
+
+
+/* ====== titulo ====== */ 
+.titulo{
+  text-align: center;  
+} 
+h2.titulo{
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  background: linear-gradient(90deg, var(--color-principal), var(--color-secundario));
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 1px;
+}
+
+
+/* ====== pie de pagina ====== */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 40px;
+} 
+
+
+/* ====== enlace crear cuenta ====== */  
+.crear-cuenta {
+text-align: center;
+margin-top: 20px;
+font-size: 12px;
+color: var(--color-quinto);
+}
+
+.crear-cuenta a {
+color: var(--color-sexto);
+text-decoration: none;
+font-weight: 700;
+}
+
+.crear-cuenta a:hover {
+text-decoration: underline;
+}
+
+
+
+/* ====== enlace crear cuenta ====== */  
+dialog {
+border: none;
+border-radius: 15px;
+padding: 20px 30px;
+box-shadow: 0px 4px 15px rgba(8, 8, 8, 0.3);
+width: 320px;
+
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background-color: var(--color-cuatro);
+}
+
+dialog::backdrop {
+background: rgba(0, 0, 0, 0.5); /* fondo oscuro detrás del cuadro */
+}
+
+dialog:not([open]) {
+  display: none;
+}
+
+/* Estilos del formulario dentro del diálogo */
+#formulario-registro {
+display: flex;
+flex-direction: column;
+gap: 10px;
+background-color: var(--color-cuatro);
+width: 100%;
+}
+
+#formulario-registro h3 {
+text-align: center;
+margin-bottom: 30px;
+font-size: 30px;
+font-weight: bold;
+background: linear-gradient(90deg, var(--color-principal), var(--color-secundario));
+-webkit-background-clip: text;
+color: transparent;
+letter-spacing: 1px;
+}
+
+#formulario-registro label {
+  margin-bottom: 2px;
+  font-weight: 500;
+  color: var(--color-quinto);
+}
+
+#formulario-registro input {
+width: 100%;
+padding: 8px;
+border: 1px solid var(--color-sexto);
+border-radius: 10px; 
+box-sizing: border-box;
+}
+
+#formulario-registro #btn-guardar,
+#formulario-registro #btn-cancelar {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  background-color: var(--color-secundario);
+  transition: background-color 0.5s ease;
+}
+
+#formulario-registro button:hover {
+background-color: var(--color-principal);
+color: white;
+}

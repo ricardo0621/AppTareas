@@ -1,5 +1,5 @@
 let form = document.querySelector(".formulario-seccion");//busca un class (debe ser con queryselector y el nombre con un .)
-let logincontainer = document.getElementById("login-container");// busca con un id
+//let logincontainer = document.getElementById("login-container");// busca con un id
 let tareascontainer = document.getElementById("tareas-container");//busca con un id
 let cerrarseccion = document.getElementById("cerrar-sesion");
 let bienvenida = document.getElementById("bienvenida");

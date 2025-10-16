@@ -1,24 +1,23 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  font-family: Arial, sans-serif;
+  background: #343457;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  
+
 #login-container{
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  width: 300px;
+background: #fff;
+padding: 50px;
+border-radius: 10px;
+box-shadow: 0 4px 6px rgba(12, 12, 12, 0.1);
+width: 500px;
 }
 
 
 .titulo{
-    font-family: "Courier New", monospace;
     text-align: center;
     font-size: 25px;
 }
@@ -27,16 +26,19 @@ body {
 .datos-user {
     display: block;
     margin-top: 10px;
-    color: rgb(46, 5, 99);
+    color: rgb(6, 8, 129);
     font-size: 18px;
   }
 
+#parrafo_login{
+  text-align: center;
+}
 
 .cajas-user{
-  width: 100%;
-  padding: 8px;
+  width: 95%;
+  padding: 10px;
   margin-top: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #888686;
   border-radius: 5px;
 }
 
@@ -44,7 +46,7 @@ body {
   margin-top: 15px;
   width: 100%;
   padding: 10px;
-  background: #4CAF50;
+  background: rgb(48, 22, 95);
   color: white;
   border: none;
   border-radius: 5px;
@@ -52,7 +54,7 @@ body {
 }
 
 #ingresa:hover {
-    background: #155a18;
+    background: rgb(85, 6, 175);
   }
 
 .hidden{
@@ -223,6 +225,27 @@ body {
     margin: 0 auto 15px; /* centrado */
     max-width: 120px;    /* tamaño máximo */
     height: auto;        /* mantiene proporción */
+  } 
+
+
+#logo_login{
+  display: flex;                /* usamos flexbox */
+  justify-content: center;      /* centra horizontalmente el logo */
+  align-items: center;          /* centra verticalmente el logo */
+  background: #fff;
+  padding: 20px 100px;          /* 👈 padding arriba/abajo = 10px, izq/der = 350px */
+  padding-right: 200px;
+  padding-left: 200px;
+  border-radius: 15px;
+  box-shadow: 0 5px 6px rgba(44, 4, 109, 0.1);
+  border-bottom: 5px solid rgba(44, 4, 109, 0.3);
+  margin: 0 auto;
+  width: 110px;
+}
+
+#logo_login img {
+  max-width: 60px;             /* tamaño del logo */
+  height: 0 auto;
 }
 
 .logo-tareas {
