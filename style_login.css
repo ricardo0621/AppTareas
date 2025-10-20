@@ -30,7 +30,7 @@ body{
 }
 
 /* ====== BOTÓN ====== */
-.boton-ingresa {
+.boton {
   
   
   padding: 10px 15px;
@@ -42,13 +42,13 @@ body{
   transition: background-color 0.5s ease;
 }
 
-.boton-ingresa:hover {
+.boton:hover {
   background-color: var(--color-principal);
 }
 
 /* ====== label e input ====== */
 .datos-user {
-  display: block;
+ 
   margin-bottom: 6px;
   font-weight: 500;
   color: var(--color-quinto);

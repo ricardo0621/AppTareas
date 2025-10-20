@@ -54,4 +54,19 @@ btnAcceso.addEventListener("click", (e)=>{
     }else{
         alert("Usuario o contraseña incorrectos");
     }
+    /**
+         if(usuarioEncontrado){
+                // Guardar el nombre del usuario en sessionStorage para mostrarlo luego si quieres
+            sessionStorage.setItem('usuarioLogueado', usuarioEncontrado.nombre);
+
+                // Redirigir a la página de tareas
+            window.location.href = "tareas.html";
+        }else{
+                alert("Usuario o contraseña incorrectos");
+            }
+
+
+         window.location.href	Sí	Cuando está bien regresar
+         window.location.replace	No	Cuando no quieres que vuelva   
+     */
 });

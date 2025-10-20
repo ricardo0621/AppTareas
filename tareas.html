@@ -4,41 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista tareas Modulo 2</title>
-    <link rel="styles" href="styles.css">
+    <link rel="stylesheet" href="style_login.css">
+    <link rel="stylesheet" href="style_tareas.css">
 </head>
 <body>
      <!--esta es la parte de las tareas-->
-     <div id ="tareas-container" class="hidden">
-        <img src="img/logoRC.png" alt="RC Task Logo" class="logo-tareas">
+     <div class ="page-template" >
+        <div class="main-login">
 
-        <h4 id="bienvenida"></h4>
-        <h2 class="titulo">APLICACION DE TAREAS</h2>
-        
-        <!-- Formulario para agregar tareas -->
-        <form id="form-tarea">
-            <textarea id="nueva-tarea" placeholder="Escribe una tarea" required></textarea>
-        </br>
-            <button type="submit">Agregar</button>
-        </form>
+                <div class="logo-atom">
+                    <img src="img/logoRC3.png" width= "100px"; alt="RC Task Logo">
+                </div>
+
+                <h2 class="titulo">APLICACION DE TAREAS</h2>
+                
+                <!-- Formulario para agregar tareas -->
+                <input type="text" id="titulo-tarea" placeholder="Título de la tarea" required>
+                <textarea id="descripcion-tarea" placeholder="Escribe una tarea" required></textarea>
+                <button type="button" class="boton" >Agregar</button>
+                
 
 
-         <!-- Lista de tareas -->
-        <h3 class="titulo-pendientes">Tareas Pendientes</h3>  
-        <ul id="lista-tareas"></ul>
-        <div id="paginacion-pendientes"></div>
+                <!-- Lista de tareas -->
+                <h3 class="titulo-pendientes">Tareas Pendientes</h3>  
+                <ul id="lista-tareas"></ul>
+                <div id="paginacion-pendientes"></div>
 
-        <h3 class="titulo-completas">Tareas cumplidas</h3>
-        <ul id="lista-completas"></ul>
-        <div id="paginacion-completas"></div>
+                <h3 class="titulo-completas">Tareas cumplidas</h3>
+                <ul id="lista-completas"></ul>
+                <div id="paginacion-completas"></div>
 
-        <button id="cerrar-sesion">Cerrar Seccion</button>
+                <button class="boton">Cerrar Seccion</button>
 
-        <footer>
-            <p>Cualquier inquietud comunicarse al correo: 
-                <a href="mailto:ricardo_0621@hotmail.com">ricardo_0621@hotmail.com</a>
-            </p>
-        </footer>
+        </div>
     </div>
+
+    <footer>
+        <p>Cualquier inquietud comunicarse al correo: 
+            <a href="mailto:ricardo_0621@hotmail.com">ricardo_0621@hotmail.com</a>
+        </p>
+    </footer>
 
     <script src="./tareas.js"></script>
     
