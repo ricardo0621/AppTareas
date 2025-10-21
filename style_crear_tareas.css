@@ -25,3 +25,10 @@ textarea::placeholder {
   font-size: 10px;
   text-align: left;
 }
+
+
+#cerrar-seccion{
+  margin-top: 20px;
+  padding: 5px;
+
+}

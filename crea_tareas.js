@@ -12,7 +12,6 @@ let btnCerrarSesion  = document.getElementById("cerrar-seccion");
 let txtTituloTarea = document.getElementById("titulo-tarea");
 let txtDescripcionTarea = document.getElementById("descripcion-tarea");
 let btnAgregarTarea = document.getElementById("btn-agregarTarea");
-let listaTareas = document.getElementById("lista-tareas");
 
 
 // Función para limpiar los campos
@@ -23,23 +22,6 @@ function limpiarCampos() {
     document.getElementById("categoria").value = "";
 }
 
-
-function mostrarTareas(usuario) {
-    listaTareas.innerHTML = ""; // Limpiar lista
-    let tareas = gestorTareas.obtenerTareas(usuario);
-
-    tareas.forEach((tarea, index) => {
-        let li = document.createElement("li");
-        li.innerHTML = `
-            <strong>${tarea.titulo}</strong> - ${tarea.descripcion} 
-            [${tarea.prioridad}, ${tarea.categoria}] 
-            <em>(${tarea.estado})</em>
-            <button onclick="marcarCompletada(${index})">✅</button>
-            <button onclick="eliminarTarea(${index})">❌</button>
-        `;
-        listaTareas.appendChild(li);
-    });
-}
 
 //evento cerrar seccion
 btnCerrarSesion.addEventListener("click",()=>{
@@ -67,8 +49,7 @@ btnAgregarTarea.addEventListener("click",(e)=>{
     // Guardarla en el gestor
     gestorTareas.agregarTarea(usuarioLogueado, nuevaTarea);
 
-    // Mostrar en la lista
-    mostrarTareas(usuarioLogueado);
+    
     
 
     // Limpiar campos
@@ -76,14 +57,3 @@ btnAgregarTarea.addEventListener("click",(e)=>{
 
 });
 
-
-
-window.marcarCompletada = function (index) {
-    gestorTareas.marcarTareaComoCompletada(usuarioLogueado, index);
-    mostrarTareas(usuarioLogueado);
-};
-
-window.eliminarTarea = function (index) {
-    gestorTareas.eliminarTarea(usuarioLogueado, index);
-    mostrarTareas(usuarioLogueado);
-};

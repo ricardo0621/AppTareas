@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista tareas Modulo 2</title>
     <link rel="stylesheet" href="style_login.css">
-    <link rel="stylesheet" href="style_tareas.css">
+    <link rel="stylesheet" href="style_crear_tareas.css">
 </head>
 <body>
      <!--esta es la parte de las tareas-->
@@ -40,17 +40,8 @@
                 <input type="text" id="titulo-tarea" placeholder="Título de la tarea" required>
                 <textarea id="descripcion-tarea" placeholder="Escribe una tarea" required></textarea>
                 <button type="button" class="boton" id="btn-agregarTarea">Agregar</button>
+                <button type="button" class="boton" id="btn-listaTareas">Mostrar Tareas</button>
                 
-
-
-                <!-- Lista de tareas -->
-                <h3 class="titulo-pendientes">Tareas Pendientes</h3>  
-                <ul id="lista-tareas"></ul>
-                <div id="paginacion-pendientes"></div>
-
-                <h3 class="titulo-completas">Tareas cumplidas</h3>
-                <ul id="lista-completas"></ul>
-                <div id="paginacion-completas"></div>
 
                 <button type="button" class="boton" id = "cerrar-seccion">Cerrar Seccion</button>
 
@@ -67,7 +58,7 @@
     <script src="./ClasesUsuario.js"></script>
     <script src="./ClasesTareas.js"></script>
     <script src="./login.js"></script>
-    <script src="./tareas.js"></script>
+    <script src="./crea_tareas.js"></script>
     
 </body>
 </html>

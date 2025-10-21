@@ -57,7 +57,7 @@ btnAcceso.addEventListener("click", (e)=>{
         sessionStorage.setItem('usuarioLogueado', usuarioEncontrado.nombre);
 
         // Redirigir a la página de tareas
-        window.location.replace("tareas.html");
+        window.location.replace("crear_tareas.html");
     }else{
         alert("Usuario o contraseña incorrectos");
         usuarioAcceso.value = "";
