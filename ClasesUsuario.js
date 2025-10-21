@@ -12,16 +12,28 @@ class GestionUsuario{
     }
 
     registrarUsuario(usuario){
+        // Verificar si ya existe un usuario con el mismo nombre de usuario
+        const existe = this.usuarios.some(
+            (u) => u.usuario.toLowerCase() === usuario.usuario.toLowerCase()
+        );
+    
+        if (existe) {
+            alert("⚠️ El nombre de usuario ya está registrado. Intenta con otro.");
+            return false; // no se registra
+        }
+
+
         this.usuarios.push(usuario);
-        alert("Usuario registrado con exito");
+        alert("✅ Usuario registrado con éxito");
         this.mostrarUsuarios();
+        return true; // se registra
     }
 
     mostrarUsuarios(){
         console.log(this.usuarios);
     }
 
-    
+
     verificarUsuario(usuario, contrasena){
 
         return this.usuarios.find((busca)=>

@@ -33,9 +33,12 @@ btnGuardar.addEventListener("click",(e)=>{
         txtusuario.value,
         txtcontrasena.value);
     
-    gestionUsuario.registrarUsuario(usuario1);//llama la funcion registrarUsuario de la clase gestionUsuario
-    dialogo.close();
-    limpiarFormularioCreacion();
+    const registrado = gestionUsuario.registrarUsuario(usuario1);//llama la funcion registrarUsuario de la clase gestionUsuario
+    
+    if(registrado){
+        dialogo.close();
+        limpiarFormularioCreacion();
+    }
 });
 
 //este es el evento de cerrar el dialogo desde el evento llama la funcion
@@ -50,23 +53,14 @@ btnAcceso.addEventListener("click", (e)=>{
 
     let usuarioEncontrado = gestionUsuario.verificarUsuario(usuario, contrasena)
     if(usuarioEncontrado){
-        alert("Bienvenido");
+        // Guardar el nombre del usuario en sessionStorage para mostrarlo luego si quieres
+        sessionStorage.setItem('usuarioLogueado', usuarioEncontrado.nombre);
+
+        // Redirigir a la página de tareas
+        window.location.replace("tareas.html");
     }else{
         alert("Usuario o contraseña incorrectos");
+        usuarioAcceso.value = "";
+        contrasenaAcceso.value = "";
     }
-    /**
-         if(usuarioEncontrado){
-                // Guardar el nombre del usuario en sessionStorage para mostrarlo luego si quieres
-            sessionStorage.setItem('usuarioLogueado', usuarioEncontrado.nombre);
-
-                // Redirigir a la página de tareas
-            window.location.href = "tareas.html";
-        }else{
-                alert("Usuario o contraseña incorrectos");
-            }
-
-
-         window.location.href	Sí	Cuando está bien regresar
-         window.location.replace	No	Cuando no quieres que vuelva   
-     */
 });

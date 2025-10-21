@@ -18,10 +18,28 @@
 
                 <h2 class="titulo">APLICACION DE TAREAS</h2>
                 
-                <!-- Formulario para agregar tareas -->
+                <label for="prioridad">Prioridad:</label>
+                <select id="prioridad" name="prioridad" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="alta">Alta</option>
+                    <option value="media">Media</option>
+                    <option value="baja">Baja</option>
+                </select>
+
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="">Selecciona una categoría</option>
+                    <option value="trabajo">Trabajo</option>
+                    <option value="estudio">Estudio</option>
+                    <option value="personal">Personal</option>
+                    <option value="compras">Compras</option>
+                    <option value="otros">Otros</option>
+                </select>
+
+                <!-- seccion para agregar tareas -->
                 <input type="text" id="titulo-tarea" placeholder="Título de la tarea" required>
                 <textarea id="descripcion-tarea" placeholder="Escribe una tarea" required></textarea>
-                <button type="button" class="boton" >Agregar</button>
+                <button type="button" class="boton" id="btn-agregarTarea">Agregar</button>
                 
 
 
@@ -34,7 +52,7 @@
                 <ul id="lista-completas"></ul>
                 <div id="paginacion-completas"></div>
 
-                <button class="boton">Cerrar Seccion</button>
+                <button type="button" class="boton" id = "cerrar-seccion">Cerrar Seccion</button>
 
         </div>
     </div>
@@ -45,6 +63,10 @@
         </p>
     </footer>
 
+    
+    <script src="./ClasesUsuario.js"></script>
+    <script src="./ClasesTareas.js"></script>
+    <script src="./login.js"></script>
     <script src="./tareas.js"></script>
     
 </body>

@@ -1,126 +1,89 @@
-let form = document.querySelector(".formulario-seccion");//busca un class (debe ser con queryselector y el nombre con un .)
-//let logincontainer = document.getElementById("login-container");// busca con un id
-let tareascontainer = document.getElementById("tareas-container");//busca con un id
-let cerrarseccion = document.getElementById("cerrar-sesion");
-let bienvenida = document.getElementById("bienvenida");
-let formTarea = document.getElementById("form-tarea");
-
-
-
-class Usuario {
-    constructor(usuario, contrasena) {
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-    }
+// Recuperar usuario logueado, evitas que alguien escriba tareas.html en la barra del navegador y entre sin iniciar sesión.
+let usuarioLogueado = sessionStorage.getItem("usuarioLogueado");
+if (!usuarioLogueado) {
+    alert("Debes iniciar sesión primero");
+    window.location.replace("login.html");
 }
 
-let user_prueba = new Usuario("ricar", "123456");
+// Crear instancia del gestor de tareas
+let gestorTareas = new GestorTareas();
 
-form.addEventListener("submit",(e)=>{
-    e.preventDefault(); // evita recargar la página
-    let userInput = document.getElementById("usuario").value;
-    let passInput  = document.getElementById("contrasena").value;
+let btnCerrarSesion  = document.getElementById("cerrar-seccion");
+let txtTituloTarea = document.getElementById("titulo-tarea");
+let txtDescripcionTarea = document.getElementById("descripcion-tarea");
+let btnAgregarTarea = document.getElementById("btn-agregarTarea");
+let listaTareas = document.getElementById("lista-tareas");
 
-    if(userInput === user_prueba.usuario && passInput === user_prueba.contrasena){
-        logincontainer.style.display = "none";
-        tareascontainer.classList.remove("hidden");
 
-        // Solo actualiza el texto, no reemplaza todo el div
-        bienvenida.textContent = `BIENVENIDO ${userInput}`;
-        bienvenida.style.textAlign = "center"; // lo centra
-       
-    }else{
-        alert("Usuario o contraseña incorrectos");
-    }
-});
+// Función para limpiar los campos
+function limpiarCampos() {
+    txtTituloTarea.value = "";
+    txtDescripcionTarea.value = "";
+    document.getElementById("prioridad").value = "";
+    document.getElementById("categoria").value = "";
+}
 
+
+function mostrarTareas(usuario) {
+    listaTareas.innerHTML = ""; // Limpiar lista
+    let tareas = gestorTareas.obtenerTareas(usuario);
+
+    tareas.forEach((tarea, index) => {
+        let li = document.createElement("li");
+        li.innerHTML = `
+            <strong>${tarea.titulo}</strong> - ${tarea.descripcion} 
+            [${tarea.prioridad}, ${tarea.categoria}] 
+            <em>(${tarea.estado})</em>
+            <button onclick="marcarCompletada(${index})">✅</button>
+            <button onclick="eliminarTarea(${index})">❌</button>
+        `;
+        listaTareas.appendChild(li);
+    });
+}
 
 //evento cerrar seccion
-cerrarseccion.addEventListener("click",()=>{
-    tareascontainer.classList.add("hidden");
-    logincontainer.style.display = "block";  // vuelve a mostrar login
-    form.reset(); // limpia los campos de usuario y contraseña
+btnCerrarSesion.addEventListener("click",()=>{
+    sessionStorage.removeItem("usuarioLogueado");
+    alert("Sesión cerrada correctamente");
+    window.location.replace("login.html");
 });
 
 
-/// funcion y evento para crear o agregar tarea
-let tareaIdCounter = 0; // contador global
+//evento agregar tarea
+btnAgregarTarea.addEventListener("click",(e)=>{
+    e.preventDefault();
+    let titulo = txtTituloTarea.value.trim();
+    let descripcion = txtDescripcionTarea.value.trim();
+    let prioridad = document.getElementById("prioridad").value;
+    let categoria = document.getElementById("categoria").value;
 
-
-function agregarTarea(taskName) {
-    let lista = document.getElementById("lista-tareas");
-
-    // crear <li>
-    let tarea = document.createElement("li");
-    tareaIdCounter++;
-    tarea.id = "tarea-" + tareaIdCounter;
-
-    // contenedor para TASK X + texto
-    let contenido = document.createElement("div");
-    contenido.classList.add("contenido-tarea");
-
-    // span para el ID
-    let idSpan = document.createElement("span");
-    idSpan.textContent = `TASK ${tareaIdCounter}: `;
-    idSpan.classList.add("tarea-id"); 
-
-
-    // span para el texto
-    let texto = document.createElement("span");
-    texto.textContent = taskName;
-    texto.classList.add("tarea-texto"); 
-
-    // agregar TASK y texto dentro del contenedor
-    contenido.appendChild(idSpan);
-    contenido.appendChild(texto);
-
-
-     // Botón para eliminar en cada li
-     let btnEliminar = document.createElement("button");
-     btnEliminar.textContent = "🗑️";
-     btnEliminar.classList.add("btn-eliminar"); // clase para el CSS
-     btnEliminar.addEventListener("click", () => {
-         eliminarTarea(tarea.id);
-     });
-
-     // boton para completar
-     let btnCompletar = document.createElement("button");
-     btnCompletar.textContent = "✔️";
-     btnCompletar.classList.add("btn-completar");
-     btnCompletar.addEventListener("click", () => {
-        moverACompletadas(tarea);
-     });
- 
-
-     // armar <li>
-     tarea.appendChild(contenido);
-     tarea.appendChild(btnEliminar);
-     tarea.appendChild(btnCompletar);
-    // agregar la tarea a la lista
-    lista.appendChild(tarea);
-}
-
-//evento del boton agregar
-formTarea.addEventListener("submit", (e)=> {
-    e.preventDefault(); // evita recargar
-    let tarea = document.getElementById("nueva-tarea").value;
-    agregarTarea(tarea);
-    formTarea.reset(); // limpia el input
-});
-
-
-// funcion para eliminar tarea
-function eliminarTarea(taskId) {
-    let tarea = document.getElementById(taskId);
-    if (tarea) {
-        tarea.remove(); // elimina el <li>
+    if(titulo === "" || descripcion === "" || prioridad === "" || categoria === ""){
+        alert("Por favor, completa todos los campos de la tarea.");
+        return;
     }
+
+    // Crear tarea con la clase
+    let nuevaTarea = new Tarea(titulo, descripcion, prioridad, categoria);
+    // Guardarla en el gestor
+    gestorTareas.agregarTarea(usuarioLogueado, nuevaTarea);
+
+    // Mostrar en la lista
+    mostrarTareas(usuarioLogueado);
+    
+
+    // Limpiar campos
+    limpiarCampos();
+
+});
+
+
+
+window.marcarCompletada = function (index) {
+    gestorTareas.marcarTareaComoCompletada(usuarioLogueado, index);
+    mostrarTareas(usuarioLogueado);
 };
 
-
-function moverACompletadas(tarea) {
-    tarea.querySelector(".btn-completar").remove();
-    tarea.classList.add("completada"); // aplica estilo
-    document.getElementById("lista-completas").appendChild(tarea);
-}
-
+window.eliminarTarea = function (index) {
+    gestorTareas.eliminarTarea(usuarioLogueado, index);
+    mostrarTareas(usuarioLogueado);
+};
